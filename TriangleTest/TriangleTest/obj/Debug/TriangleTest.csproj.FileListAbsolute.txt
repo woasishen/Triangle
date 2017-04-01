@@ -1,0 +1,9 @@
+c:\users\administrator.sc-201608021220\documents\visual studio 2015\Projects\TriangleTest\TriangleTest\bin\Debug\TriangleTest.exe.config
+c:\users\administrator.sc-201608021220\documents\visual studio 2015\Projects\TriangleTest\TriangleTest\bin\Debug\TriangleTest.exe
+c:\users\administrator.sc-201608021220\documents\visual studio 2015\Projects\TriangleTest\TriangleTest\bin\Debug\TriangleTest.pdb
+c:\users\administrator.sc-201608021220\documents\visual studio 2015\Projects\TriangleTest\TriangleTest\obj\Debug\TriangleTest.csprojResolveAssemblyReference.cache
+c:\users\administrator.sc-201608021220\documents\visual studio 2015\Projects\TriangleTest\TriangleTest\obj\Debug\TriangleTest.Properties.Resources.resources
+c:\users\administrator.sc-201608021220\documents\visual studio 2015\Projects\TriangleTest\TriangleTest\obj\Debug\TriangleTest.csproj.GenerateResource.Cache
+c:\users\administrator.sc-201608021220\documents\visual studio 2015\Projects\TriangleTest\TriangleTest\obj\Debug\TriangleTest.exe
+c:\users\administrator.sc-201608021220\documents\visual studio 2015\Projects\TriangleTest\TriangleTest\obj\Debug\TriangleTest.pdb
+c:\users\administrator.sc-201608021220\documents\visual studio 2015\Projects\TriangleTest\TriangleTest\obj\Debug\TriangleTest.Form.resources
