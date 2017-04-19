@@ -13,7 +13,6 @@ namespace TriangleTest.Entities
         {
             _originData = new[] {a, b, c};
             _data = new[] {a, b, c};
-            var test = GetNormal();
         }
 
         public void Mul(Matrix4X4 matrix4X4)
@@ -26,9 +25,9 @@ namespace TriangleTest.Entities
 
         public Vector4 GetNormal()
         {
-            var u = _originData[1] - _originData[0];
-            var v = _originData[2] - _originData[0];
-            return u*v;
+            var u = _data[1] - _data[0];
+            var v = _data[2] - _data[0];
+            return u.Coss(v).Normalize();
         }
     }
 }

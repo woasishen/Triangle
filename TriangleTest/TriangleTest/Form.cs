@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using TriangleTest.Entities;
 
@@ -9,7 +10,7 @@ namespace TriangleTest
     {
         private readonly Triangle _triangle;
 
-        #region 物体本身变幻
+        #region 物体本身变化
         private readonly Matrix4X4 _scale;
         private readonly Matrix4X4 _rota;
         private readonly Matrix4X4 _trans;
@@ -17,7 +18,7 @@ namespace TriangleTest
         private int _angleX;
         #endregion
 
-        #region 相机变幻
+        #region 相机变化
 
         private readonly Matrix4X4 _cRota;
         private readonly Matrix4X4 _cTrans;
@@ -26,6 +27,7 @@ namespace TriangleTest
 
         #endregion
 
+        private bool cullBack;
 
         public Form()
         {
@@ -62,16 +64,22 @@ namespace TriangleTest
         private void DrawTriangle(Graphics g)
         {
             g.TranslateTransform(300, 300);
-            var m = _scale.Mul(_rota).Mul(_trans);
-            _triangle.Mul(m.Mul(_cRota).Mul(_cTrans).Mul(_proj));
-            g.DrawLines(new Pen(Color.Red, 2),
-                new[]
-                {
-                    _triangle[0].PointF,
-                    _triangle[1].PointF,
-                    _triangle[2].PointF,
-                    _triangle[0].PointF
-                });
+            var points = new[]
+            {
+                _triangle[0].PointF,
+                _triangle[1].PointF,
+                _triangle[2].PointF,
+                _triangle[0].PointF
+            };
+            g.DrawLines(new Pen(Color.Red, 2), points);
+
+            if (!cullBack)
+            {
+                var paths = new GraphicsPath();
+                paths.AddLines(points);
+                g.FillPath(new SolidBrush(Color.White), paths);
+            }
+
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -90,6 +98,11 @@ namespace TriangleTest
             //_cRota[3][2] = (float)Math.Sin(anglePi);
             //_cRota[3][3] = (float)Math.Cos(anglePi);
 
+            var m = _scale.Mul(_rota).Mul(_trans);
+            _triangle.Mul(m.Mul(_cRota).Mul(_cTrans).Mul(_proj));
+
+            var tempNormal = _triangle.GetNormal();
+            cullBack = tempNormal.Dot(new Vector4(0, 0, -1, 0)) < 0;
 
             Invalidate();
         }

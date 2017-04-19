@@ -49,6 +49,11 @@ namespace TriangleTest.Entities
             _data = new[] { x, y, z, 1 };
         }
 
+        public Vector4(float x, float y, float z, float w)
+        {
+            _data = new[] { x, y, z, w };
+        }
+
         public PointF PointF => new PointF(this[1] / this[4], -this[2] / this[4]);
 
         public Vector4 Mul(Matrix4X4 matrix4X4)
@@ -64,6 +69,27 @@ namespace TriangleTest.Entities
             return result;
         }
 
+        public Vector4 Normalize()
+        {
+            var mod = (float)Math.Sqrt(X*X + Y*Y + Z*Z + W*W);
+            return new Vector4(X/mod, Y/mod, Z/mod, W/mod);
+        }
+
+        public Vector4 Coss(Vector4 v)
+        {
+            return new Vector4
+            {
+                X = Y * v.Z - Z * v.Y,
+                Y = Z * v.X - X * v.Z,
+                Z = X * v.Y - Y * v.X
+            }; 
+        }
+
+        public float Dot(Vector4 v)
+        {
+            return X*v.X + Y*v.Y + Z*v.Z + W*v.W;
+        }
+
         public static Vector4 operator -(Vector4 a, Vector4 b)
         {
             var reslut = new Vector4();
@@ -72,16 +98,6 @@ namespace TriangleTest.Entities
                 reslut[i] = a[i] - b[i];
             }
             return reslut;
-        }
-
-        public static Vector4 operator *(Vector4 a, Vector4 b)
-        {
-            var result = new Vector4();
-            result.X = a.Y * b.Z - a.Z * b.Y;
-            result.Y = a.Z * b.X - a.X * b.Z;
-            result.Z = a.X * b.Y - a.Y * b.X;
-
-            return result;
         }
 
         public override string ToString()
