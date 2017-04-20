@@ -99,10 +99,11 @@ namespace TriangleTest
             //_cRota[3][3] = (float)Math.Cos(anglePi);
 
             var m = _scale.Mul(_rota).Mul(_trans);
-            _triangle.Mul(m.Mul(_cRota).Mul(_cTrans).Mul(_proj));
-
             var tempNormal = _triangle.GetNormal();
             cullBack = tempNormal.Dot(new Vector4(0, 0, -1, 0)) < 0;
+            _triangle.Mul(m.Mul(_cRota).Mul(_cTrans).Mul(_proj));
+
+
 
             Invalidate();
         }

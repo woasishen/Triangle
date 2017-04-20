@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace TriangleTest.Entities
+﻿namespace TriangleTest.Entities
 {
     class Matrix4X4
     {

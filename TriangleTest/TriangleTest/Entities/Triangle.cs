@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace TriangleTest.Entities
+﻿namespace TriangleTest.Entities
 {
     class Triangle
     {
